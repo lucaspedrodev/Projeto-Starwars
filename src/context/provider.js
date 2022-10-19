@@ -4,7 +4,11 @@ import myContext from './myContext';
 
 function Provider({ children }) {
   const [data, setData] = useState([]);
+  const [name, setName] = useState('');
 
+  const handleName = ({ target }) => {
+    setName(target.value);
+  };
   useEffect(() => {
     const requestAPI = async () => {
       const response = await fetch('https://swapi.dev/api/planets');
@@ -14,7 +18,7 @@ function Provider({ children }) {
     };
     requestAPI();
   }, []);
-  const context = useMemo(() => ({ data }), [data]);
+  const context = useMemo(() => ({ data, name, handleName }), [data, name]);
   return (
     <myContext.Provider value={ context }>
       { children }
