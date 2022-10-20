@@ -26,19 +26,19 @@ export default function Table() {
         {data.filter((el) => el.name.toUpperCase().includes(name.toUpperCase()))
           .map((e) => (
             <tr key={ e.name }>
-              <td>{ e.name }</td>
-              <td>{ e.created }</td>
-              <td>{ e.diameter }</td>
-              <td>{ e.edited }</td>
-              <td>{ e.films }</td>
-              <td>{ e.gravity }</td>
-              <td>{ e.climate }</td>
-              <td>{ e.orbital_period }</td>
-              <td>{ e.population }</td>
-              <td>{ e.rotation_period }</td>
-              <td>{ e.surface_water }</td>
-              <td>{ e.terrain }</td>
-              <td>{ e.url }</td>
+              <th>{ e.name }</th>
+              <th>{ e.created }</th>
+              <th>{ e.diameter }</th>
+              <th>{ e.edited }</th>
+              <th>{ e.films }</th>
+              <th>{ e.gravity }</th>
+              <th>{ e.climate }</th>
+              <th>{ e.orbital_period }</th>
+              <th>{ e.population }</th>
+              <th>{ e.rotation_period }</th>
+              <th>{ e.surface_water }</th>
+              <th>{ e.terrain }</th>
+              <th>{ e.url }</th>
             </tr>
           ))}
       </tbody>
