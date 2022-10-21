@@ -2,14 +2,20 @@ import PropTypes from 'prop-types';
 import { useEffect, useMemo, useState } from 'react';
 import myContext from './myContext';
 
+const arrayOption = ['orbital_period',
+  'diameter',
+  'rotation_period',
+  'surface_water',
+  'population'];
+
 function Provider({ children }) {
   const [data, setData] = useState([]);
   const [name, setName] = useState('');
   const [coluna, setColuna] = useState('population');
+  const [optionMap, setOptionMap] = useState(arrayOption);
   const [operador, setOperador] = useState('maior que');
   const [inpNumber, setInpNumber] = useState(0);
   const [filters, setFilters] = useState([]);
-
   const handleName = ({ target }) => {
     setName(target.value);
   };
@@ -23,6 +29,9 @@ function Provider({ children }) {
   };
   const handleInpNumber = ({ target }) => {
     setInpNumber(target.value);
+  };
+  const handleOption = ({ target }) => {
+    setOptionMap(target.value);
   };
 
   const filterNumber = () => {
@@ -61,12 +70,14 @@ function Provider({ children }) {
       inpNumber,
       handleClick,
       filters,
+      optionMap,
+      handleOption,
       filterNumber,
       handleInpNumber,
       handleOperador,
       handleColuna,
       handleName }),
-    [data, name, coluna, operador, inpNumber, filters],
+    [data, name, coluna, operador, inpNumber, filters, optionMap],
   );
   return (
     <myContext.Provider value={ context }>

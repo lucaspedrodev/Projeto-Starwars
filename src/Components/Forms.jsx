@@ -12,7 +12,8 @@ export default function Forms() {
     operador,
     filters,
     handleOperador,
-    handleClick } = useContext(myContext);
+    handleClick,
+    optionMap } = useContext(myContext);
   return (
     <>
       <form>
@@ -35,11 +36,11 @@ export default function Forms() {
             value={ coluna }
             onChange={ handleColuna }
           >
-            <option name="column-filter" value="population">population</option>
-            <option name="column-filter" value="orbital_period">orbital_period</option>
-            <option name="column-filter" value="diameter">diameter</option>
-            <option name="column-filter" value="rotation_period">rotation_period</option>
-            <option name="column-filter" value="surface_water">surface_water</option>
+
+            {optionMap.filter((e) => {
+              const filtroColuna = filters.map((el) => el.coluna);
+              return !filtroColuna.includes(e);
+            }).map((e) => (<option key={ e } value={ e }>{e}</option>))}
           </select>
         </label>
         <label htmlFor="select2">
