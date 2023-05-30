@@ -16,6 +16,7 @@ function Provider({ children }) {
   const [operador, setOperador] = useState('maior que');
   const [inpNumber, setInpNumber] = useState(0);
   const [filters, setFilters] = useState([]);
+
   const handleName = ({ target }) => {
     setName(target.value);
   };
